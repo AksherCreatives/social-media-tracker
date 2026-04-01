@@ -30,7 +30,7 @@ export async function POST() {
   }
 
   const platforms = Object.keys(BASE)
-  const records: Parameters<typeof prisma.dailyEntry.createMany>[0]['data'] = []
+  const records: { userId: string; date: string; platform: string; impressions: number; views: number; likes: number; comments: number; shares: number; saves: number; followersGained: number; notes: string }[] = []
 
   for (let daysAgo = 89; daysAgo >= 0; daysAgo--) {
     const date = format(subDays(new Date(), daysAgo), 'yyyy-MM-dd')
